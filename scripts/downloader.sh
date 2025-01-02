@@ -24,7 +24,7 @@ OUTPUT_FILE="$2"
 #    done
 #    echo
 #}
-echo -n "Downloading... "
+echo -n "Downloading $OUTPUT_FILE... "
 # Perform the download in the background
 curl -o -sS ${OUTPUT_FILE} ${DOWNLOAD_URL} &
 
