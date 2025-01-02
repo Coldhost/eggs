@@ -25,10 +25,19 @@ OUTPUT_FILE="$2"
 #    echo
 #}
 echo -n "Downloading $OUTPUT_FILE... "
-# Perform the download in the background
-curl -sS -o ${OUTPUT_FILE} ${DOWNLOAD_URL} &
+if curl -sS -o "${OUTPUT_FILE}" "${DOWNLOAD_URL}"; then
+    echo "Download complete!"
+else
+    echo "Failed!"
+    echo "Error: File download failed. Please check the URL or your network connection."
+    curl -v "${DOWNLOAD_URL}" -o /dev/null
+    exit 1
+fi
 
-# Call the spinner while curl is running
-#spinner
+# Verify the file is not empty
+if [ ! -s "${OUTPUT_FILE}" ]; then
+    echo "Error: Downloaded file is empty or not created."
+    exit 1
+fi
 
-echo "Download complete!"
+exit 0
