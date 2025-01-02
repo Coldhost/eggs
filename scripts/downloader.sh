@@ -31,4 +31,4 @@ curl -o -sS ${OUTPUT_FILE} ${DOWNLOAD_URL} &
 # Call the spinner while curl is running
 #spinner
 
-echo "Download complete: ${OUTPUT_FILE}"
+echo "Download complete!"
