@@ -26,7 +26,7 @@ spinner() {
 }
 
 # Perform the download in the background
-curl -o ${OUTPUT_FILE} ${DOWNLOAD_URL} &
+curl -o ${OUTPUT_FILE} ${DOWNLOAD_URL} > /dev/null &
 
 # Call the spinner while curl is running
 spinner
