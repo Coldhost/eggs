@@ -26,7 +26,7 @@ OUTPUT_FILE="$2"
 #}
 echo -n "Downloading $OUTPUT_FILE... "
 # Perform the download in the background
-curl -o -sS ${OUTPUT_FILE} ${DOWNLOAD_URL} &
+curl -sS -o ${OUTPUT_FILE} ${DOWNLOAD_URL} &
 
 # Call the spinner while curl is running
 #spinner
