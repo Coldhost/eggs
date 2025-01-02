@@ -12,23 +12,23 @@ DOWNLOAD_URL="$1"
 OUTPUT_FILE="$2"
 
 # Spinner function
-spinner() {
-    local pid=$!
-    local spinstr='-\|/'
-    local i=0
-    echo -n 'Downloading... '
-    while kill -0 "$pid" 2>/dev/null; do
-        i=$(( (i+1) %4 ))
-        printf "\b${spinstr:$i:1}"
-        sleep .1
-    done
-    echo
-}
-
+#spinner() {
+#    local pid=$!
+#    local spinstr='-\|/'
+#    local i=0
+#    echo -n 'Downloading... '
+#    while kill -0 "$pid" 2>/dev/null; do
+#        i=$(( (i+1) %4 ))
+#        printf "\b${spinstr:$i:1}"
+#        sleep .1
+#    done
+#    echo
+#}
+echo -n "Downloading... "
 # Perform the download in the background
-curl -o ${OUTPUT_FILE} ${DOWNLOAD_URL} > /dev/null &
+curl -o -sS ${OUTPUT_FILE} ${DOWNLOAD_URL} &
 
 # Call the spinner while curl is running
-spinner
+#spinner
 
 echo "Download complete: ${OUTPUT_FILE}"
