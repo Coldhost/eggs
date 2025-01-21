@@ -1,14 +1,5 @@
 # Parkers eggs repo
 
-> [!WARNING]
-> 
-> End of Life / Continuation Message
-> ---
-> 
-> ***Notice:*** This repository will transition to read-only mode starting on **May 13, 2024**.
->
-> This change is necessary to facilitate the upcoming Pelican Panel Egg System integration.
-
 > [!IMPORTANT]
 >
 > ### Action Required:
