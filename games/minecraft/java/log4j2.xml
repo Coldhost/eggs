@@ -17,13 +17,10 @@
     
     <!-- Defines destinations of log messages -->
     <Appenders>
-        <!-- Output to console (Windows compatiability) -->
-        <Console name="WINDOWS_COMPAT" target="SYSTEM_OUT"></Console>
-        
         <!-- Output to console with pattern: [00:00:00 INFO]: Message -->
         <Queue name="TerminalConsole">
             <!-- https://logging.apache.org/log4j/2.x/manual/layouts.html#PatternLayout -->
-            <PatternLayout pattern="[itworks-%d{HH:mm:ss} %level]: %msg%n" />
+            <PatternLayout pattern="[%d{HH:mm:ss} %level]:itworks- %msg%n" />
         </Queue>
         
         <!-- Output to rolling (latest.log) and auto-compressed files with more verbose pattern -->
