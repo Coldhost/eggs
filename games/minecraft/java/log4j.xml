@@ -13,7 +13,7 @@
    -->
 
 <!-- Entire configuration reloads from disk every 5 seconds -->
-<Configuration monitorInterval="5" status="WARN" packages="com.mojang.util">
+<Configuration monitorInterval="5" status="WARN">
     
     <!-- Defines destinations of log messages -->
     <Appenders>
