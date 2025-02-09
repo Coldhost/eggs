@@ -1,0 +1,93 @@
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
+    "meta": {
+        "version": "PTDL_v2",
+        "update_url": null
+    },
+    "exported_at": "2025-02-09T21:55:32+01:00",
+    "name": "NodeJS Discord Egg",
+    "author": "system@coldhost.eu",
+    "description": "Coldhost.eu NodeJS Discord Egg",
+    "features": null,
+    "docker_images": {
+        "NodeJS 20": "ghcr.io\/coldhost\/yolks:nodejs_discord.js-20",
+        "NodeJS 18": "ghcr.io\/coldhost\/yolks:nodejs_discord.js-18"
+    },
+    "file_denylist": [],
+    "startup": "\/usr\/bin\/echo \"lorem ipsum\"",
+    "config": {
+        "files": "{}",
+        "startup": "{\r\n    \"done\": \"${DONE}\"\r\n}",
+        "logs": "{}",
+        "stop": "^C"
+    },
+    "scripts": {
+        "installation": {
+            "script": null,
+            "container": "ghcr.io\/coldhost\/installers:alpine",
+            "entrypoint": "ash"
+        }
+    },
+    "variables": [
+        {
+            "name": "Done message",
+            "description": "String to look for to check if server is starting.\r\nIf not edited, server may respond starting forever",
+            "env_variable": "DONE",
+            "default_value": "Logged in as",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string",
+            "field_type": "text"
+        },
+        {
+            "name": "Enable Antivirus",
+            "description": "If antivirus should be enabled",
+            "env_variable": "ENABLE_AV",
+            "default_value": "1",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|boolean",
+            "field_type": "text"
+        },
+        {
+            "name": "Autodelete quarantine",
+            "description": "If quarantine should automaticaly delete all files in quarantine",
+            "env_variable": "AUTOREMOVE",
+            "default_value": "0",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|boolean",
+            "field_type": "text"
+        },
+        {
+            "name": "Scan Only Modules",
+            "description": "if antivirus should only scan modules installed by npm",
+            "env_variable": "ONLY_MODULES",
+            "default_value": "0",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|boolean",
+            "field_type": "text"
+        },
+        {
+            "name": "Git downloading",
+            "description": "Download repository and use that instead of code in the directory\r\nTO ENABLE PLEASE REINSTALL THE SERVER, WILL REMOVE CURRENT FILES",
+            "env_variable": "GIT_DOWNLOAD",
+            "default_value": "0",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|boolean",
+            "field_type": "text"
+        },
+        {
+            "name": "Repository Link",
+            "description": "Link to the git repository to be used",
+            "env_variable": "GIT_REPO",
+            "default_value": "https:\/\/github.com\/mrnobody\/example",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string",
+            "field_type": "text"
+        }
+    ]
+}
