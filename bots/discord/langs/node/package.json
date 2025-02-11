@@ -1,0 +1,12 @@
+{
+    "name": "my_discord_bot",
+    "description": "make your package easier to find on the npm website",
+    "version": "1.0.0",
+    "scripts": {
+        "start": "node bot.js"
+    },
+    "license": "ISC",
+    "dependencies": {
+        "discord.js": "^14.17.3"
+    }
+}
