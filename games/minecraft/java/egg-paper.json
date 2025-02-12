@@ -4,9 +4,9 @@
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2025-01-26T17:52:46+01:00",
+    "exported_at": "2025-02-12T14:21:47+01:00",
     "name": "Paper",
-    "author": "parker@pterodactyl.io",
+    "author": "system@coldhost.eu",
     "description": "Coldhost.eu Paper egg",
     "features": [
         "eula",
@@ -14,6 +14,7 @@
         "pid_limit"
     ],
     "docker_images": {
+        "Java 23": "ghcr.io\/coldhost\/yolks:java_23",
         "Java 21": "ghcr.io\/coldhost\/yolks:java_21",
         "Java 17": "ghcr.io\/coldhost\/yolks:java_17",
         "Java 16": "ghcr.io\/coldhost\/yolks:java_16",
