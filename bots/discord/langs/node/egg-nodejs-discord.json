@@ -4,41 +4,38 @@
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2025-02-09T21:55:32+01:00",
+    "exported_at": "2025-02-12T14:34:19+01:00",
     "name": "NodeJS Discord Egg",
     "author": "system@coldhost.eu",
     "description": "Coldhost.eu NodeJS Discord Egg",
     "features": null,
     "docker_images": {
+        "NodeJS 23": "ghcr.io\/coldhost\/yolks:nodejs_discord.js-23",
+        "NodeJS 22": "ghcr.io\/coldhost\/yolks:nodejs_discord.js-22",
         "NodeJS 20": "ghcr.io\/coldhost\/yolks:nodejs_discord.js-20",
-        "NodeJS 18": "ghcr.io\/coldhost\/yolks:nodejs_discord.js-18"
+        "NodeJS 18": "ghcr.io\/coldhost\/yolks:nodejs_discord.js-18",
+        "NodeJS 17": "ghcr.io\/coldhost\/yolks:nodejs_discord.js-17",
+        "NodeJS 16": "ghcr.io\/coldhost\/yolks:nodejs_discord.js-16",
+        "NodeJS 15": "ghcr.io\/coldhost\/yolks:nodejs_discord.js-15",
+        "NodeJS 14": "ghcr.io\/coldhost\/yolks:nodejs_discord.js-14",
+        "NodeJS 12": "ghcr.io\/coldhost\/yolks:nodejs_discord.js-12"
     },
     "file_denylist": [],
-    "startup": "\/usr\/bin\/echo \"lorem ipsum\"",
+    "startup": "npm start",
     "config": {
         "files": "{}",
-        "startup": "{\r\n    \"done\": \"${DONE}\"\r\n}",
+        "startup": "{\r\n    \"done\": \"Logged in as\"\r\n}",
         "logs": "{}",
         "stop": "^C"
     },
     "scripts": {
         "installation": {
-            "script": null,
+            "script": "# NodeJS discord.js installer\r\n\r\necho \"Installer will start in 5 secconds\"\r\nsleep 1\r\necho \"Installer will start in 4 secconds\"\r\nsleep 1\r\necho \"Installer will start in 3 secconds\"\r\nsleep 1\r\necho \"Installer will start in 2 secconds\"\r\nsleep 1\r\necho \"Installer will start in 1 secconds\"\r\nsleep 1\r\necho -e               \"########################################################\"\r\necho -e \"#\\033[1;39;44m    ___      _     _                 _                \\033[0m#\"\r\necho -e \"#\\033[1;39;44m   \/ __\\___ | | __| | \/\\  \/\\___  ___| |_   ___ _   _  \\033[0m#\"\r\necho -e '#\\033[1;39;44m  \/ \/  \/ _ \\| |\/ _` |\/ \/_\/ \/ _ \\\/ __| __| \/ _ \\ | | | \\033[0m#'\r\necho -e '#\\033[1;39;44m \/ \/__| (_) | | (_| \/ __  \/ (_) \\__ \\ |_ |  __\/ |_| | \\033[0m#'\r\necho -e '#\\033[1;39;44m \\____\/\\___\/|_|\\__,_\\\/ \/_\/ \\___\/|___\/\\__(_)___|\\__,_| \\033[0m#'\r\necho -e \"#\\033[1;39;44m                                                      \\033[0m#\"\r\necho -e               \"########################################################\"\r\necho -e \"\"\r\necho -e \"Installer is starting... \"\r\n\r\nif [ $GIT_DOWNLOAD = 1 ]; then\r\n    echo \"Removing all files...\"\r\n    rm -rf \/mnt\/server\/*\r\n    echo \"Pulling all\"\r\n    git clone $GIT_REPO\r\n    name=$(basename \"$GIT_REPO\")\r\n    cp -r ${name%.git}\/. \/mnt\/server\/\r\n    echo \"Done!\"\r\nelse\r\n    echo Downloading example files...\r\n    downloader https:\/\/raw.githubusercontent.com\/Coldhost\/eggs\/refs\/heads\/master\/bots\/discord\/langs\/node\/bot.js \/mnt\/server\/bot.js\r\n    downloader https:\/\/raw.githubusercontent.com\/Coldhost\/eggs\/refs\/heads\/master\/bots\/discord\/langs\/node\/package.json \/mnt\/server\/package.json\r\n    echo \"Done!\"\r\nfi",
             "container": "ghcr.io\/coldhost\/installers:alpine",
             "entrypoint": "ash"
         }
     },
     "variables": [
-        {
-            "name": "Done message",
-            "description": "String to look for to check if server is starting.\r\nIf not edited, server may respond starting forever",
-            "env_variable": "DONE",
-            "default_value": "Logged in as",
-            "user_viewable": true,
-            "user_editable": true,
-            "rules": "required|string",
-            "field_type": "text"
-        },
         {
             "name": "Enable Antivirus",
             "description": "If antivirus should be enabled",
@@ -87,6 +84,46 @@
             "user_viewable": true,
             "user_editable": true,
             "rules": "required|string",
+            "field_type": "text"
+        },
+        {
+            "name": "Use github token",
+            "description": "If we should use bot token when updating",
+            "env_variable": "GIT_TOKEN_ENABLED",
+            "default_value": "0",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|boolean",
+            "field_type": "text"
+        },
+        {
+            "name": "Git token",
+            "description": "Git token to use when updating",
+            "env_variable": "GIT_TOKEN",
+            "default_value": "None",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string",
+            "field_type": "text"
+        },
+        {
+            "name": "Install dependencies on start",
+            "description": "This will take anything from package lock and installs it onto the server\r\nRequires package lock to be made before",
+            "env_variable": "INSTALL_PKGS",
+            "default_value": "1",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|boolean",
+            "field_type": "text"
+        },
+        {
+            "name": "Package manager",
+            "description": "Which package manager will you use (defaults to npm)",
+            "env_variable": "PACKAGE_MANAGER",
+            "default_value": "npm",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|max:20",
             "field_type": "text"
         }
     ]
